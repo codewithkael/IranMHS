@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/myfont"
+
+            android:layoutDirection="rtl"
+            android:minLines="3"
+            android:scrollHorizontally="false"
+            android:singleLine="false"
+            android:text="توجه داشته باشید حداقل تعداد پلاک ها برای سرخوشه 30 عدد میباشد ، مادامی که تعداد خانوار های بلوک کمتر از 30 میباشد ، بلوکی که در شرق این بلوک قرار گرفته به بلوک قبلی اضافه شود"
+            android:textColor="@color/colorAccent"
+            android:textDirection="rtl" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/myfont"
+                android:text="تعداد پلاک ها : " />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/myfont"
+                android:text="بیشتر از 200 عدد" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

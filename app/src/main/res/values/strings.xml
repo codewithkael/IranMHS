@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">IranMHS</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_shoro_posesh">ShoroPosesh</string>
+    <string name="title_activity_shoro_por">ShoroPor</string>
+
+
+    <string name="tv1"><p><span style="color: #0000ff;"><strong>سعی کنید پرسشگری به صورت <u>خصوصی</u> و بدون حضور سایر اعضای خانواده انجام شود.</strong></span></p><p><span style="color: #0000ff;"><strong>هنگام پرسشگری <u>تلفن همراه</u> خود را خاموش کنید و از فرد هم بخواهید که همین کار را بکند تا در روند پرسشگری وقفه ایجاد نشود.</strong></span></p><p><span style="color: #0000ff;"><strong>در زمانی که می خواهید مصاحبه اصلی را آغاز کنید، از متن زير، توضيحاتی را که قبلاً نداده ايد، برای فرد مصاحبه شونده <u>بخوانيد</u>.</strong></span></p></string>
+    <string name="title_activity_khateme">Khateme</string>
+
+
+    <string name="ts1">FI 1 : واکنش آزمودنی به درخواست <u>تماس تلفنی</u> چه بود؟ </string>
+    <string name="ts2">FI 2 : واکنش آزمودنی به درخواست <u>مراجعه حضوری</u> مجدد چه بود؟</string>
+    <string name="ts3">FI 3 : آيا مصاحبه <u>کاملاً به تنهائی</u> انجام شد؟ در صورتی که به تنهایی انجام نشده است، می توان بیش از یک گزینه 2 تا 6 را انتخاب کرد.</string>
+
+</resources>

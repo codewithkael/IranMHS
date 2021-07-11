@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1d2b36</color>
+    <color name="colorPrimaryDark">#121B22</color>
+    <color name="colorPrimaryLight">#395368</color>
+
+    <color name="colorAccent">#00ACC1</color>
+    <color name="colorAccentDark">#007C91</color>
+    <color name="colorAccentLight">#5DDEF4</color>
+
+    <color name="White1">#fdfdfd</color>
+    <color name="White2">#9c9e9f</color>
+
+    <color name="cluebtns">#D2D6D6</color>
+    <color name="cluebtnstext">#1D2B36</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

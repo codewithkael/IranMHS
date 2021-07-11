@@ -1,0 +1,52 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>مرد</item>
+        <item>زن</item>
+    </string-array>
+    <string-array name="yesno">
+        <item>بله</item>
+        <item>خیر</item>
+    </string-array>
+    <string-array name="teltype">
+        <item>شماره همراه</item>
+        <item>شماره ثابت</item>
+        <item>سایر </item>
+    </string-array>
+
+    <string-array name="morajee">
+        <item>واحد مسکونی بود و اعضای واجد شرایط شناسایی شدند</item>
+        <item>تعیین زمان برای تکمیل جدول اعضا خانوار</item>
+        <item>عدم همکاری خانوار</item>
+        <item>عدم تماس با خانوار (در روز یا ساعت دیگری مراجعه کنید)</item>
+        <item>واحد مسکونی نیست (واحد مسکونی بعدی را جایگزین کنید)</item>
+        <item>عدم وجود فرد واجد الشرایط در خانوار (واحد مسکونی بعدی را جایگزین کنید)</item>
+    </string-array>
+    <string-array name="hamtype">
+        <item>حضوری</item>
+        <item>تلفنی</item>
+
+    </string-array>
+    <string-array name="hamfard">
+        <item>خود فرد</item>
+        <item>پدر</item>
+        <item>مادر</item>
+        <item>برادر</item>
+        <item>خاهر</item>
+
+    </string-array>
+    <string-array name="natije">
+        <item>انجام مصاحبه کامل</item>
+        <item>انجام مصاحبه ناکامل</item>
+        <item>تعیین زمان برای مصاحبه</item>
+        <item>عدم همکاری فرد انتخاب شده</item>
+        <item>غیر واجد شرایط</item>
+        <item>عدم برقراری تماس</item>
+
+    </string-array>
+</resources>

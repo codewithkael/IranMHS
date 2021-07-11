@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="15dp"
+
+      android:background="@drawable/cluebackground"
+      android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/myfont"
+        android:text="هماهنگی برای مصاحبه"
+        android:textAlignment="center"
+        android:textColor="#fdfdfd"
+        android:textFontWeight="10"
+        android:textSize="25dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="25dp"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/textView7"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="@font/myfont"
+          android:text="نوع شماره"
+          android:textColor="@color/colorAccentLight"
+          android:textSize="20dp" />
+
+      <TextView
+          android:id="@+id/textView8"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="@font/myfont"
+          android:text="-"
+          android:textColor="#fdfdfd"
+          android:textSize="20dp" />
+
+      <TextView
+          android:id="@+id/textView74"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="@font/myfont"
+          android:text="شماره تماس"
+          android:textColor="@color/colorAccentLight"
+          android:textSize="20dp" />
+
+      <TextView
+          android:id="@+id/textView84"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="@font/myfont"
+          android:text="-"
+          android:textColor="#fdfdfd"
+          android:textSize="20dp" />
+
+      <TextView
+          android:id="@+id/textView71"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="@font/myfont"
+          android:text="توضیحات"
+          android:textColor="@color/colorAccentLight"
+          android:textSize="20dp" />
+      <TextView
+          android:id="@+id/textView81"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="@font/myfont"
+          android:text="-"
+          android:textColor="#fdfdfd"
+          android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/hazfmorajeee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/vazir"
+        android:text="حذف شماره" />
+
+  </LinearLayout>
+</LinearLayout>
+
+
