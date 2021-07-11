@@ -56,6 +56,7 @@ import saman.zamani.persiandate.PersianDate;
 
 public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHolder> {
 
+    private int SpinnerTextSize = 12;
     private List<questions> mData;
     private DataBase db;
     private LayoutInflater mInflater;
@@ -1484,7 +1485,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                 spn.setMinimumWidth(200);
                                 // spn.se(200);
                                 spn.setLayoutParams(params2);
-                                final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, android.R.layout.simple_spinner_item, vals);
+                                final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, R.layout.support_simple_spinner_dropdown_item, vals);
                                 spn.setAdapter(dataAdapter);
                                 spn.setDropDownWidth(300);
                                 if (ansdata.length() > 0) {
@@ -1660,6 +1661,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                             int iii = 0;
                                         }
                                         DoValidate(null, data, pviw3, pos, true, false,true);
+
                                     }
                                     @Override
                                     public void onNothingSelected(AdapterView<?> parent) {
@@ -2302,7 +2304,8 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                             vals[2].ID = 5;
                                             vals[2].text = "بله";
                                             sw.setMinimumWidth(200);
-                                            final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, android.R.layout.simple_spinner_item, vals);
+                                            final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, R.layout.support_simple_spinner_dropdown_item, vals);
+
                                             sw.setAdapter(dataAdapter);
                                             sw.setDropDownWidth(300);
                                             sw.setSelection(0,false);
@@ -2476,6 +2479,8 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                                         int iii = 0;
                                                     }
                                                     DoValidate(null, data, (View) pviw3, pos, true, false,true);
+                                                    ((TextView)view).setTextSize(SpinnerTextSize);
+
                                                 }
                                                 @Override
                                                 public void onNothingSelected(AdapterView<?> parent) {
@@ -2680,7 +2685,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                         //   spn.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
                                         //   spn.setTextDirection(View.TEXT_DIRECTION_ANY_RTL);
                                         //  spn.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                        final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, android.R.layout.simple_spinner_item, vals);
+                                        final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, R.layout.support_simple_spinner_dropdown_item, vals);
                                         final int size = ops5c.length();
                                         spn.setAdapter(dataAdapter);
 
@@ -2813,6 +2818,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                                     int iii = 0;
                                                 }
                                                 DoValidate(null, data, (View) pviw3, pos, true, false,true);
+                                                ((TextView)view).setTextSize(SpinnerTextSize);
                                             }
 
                                             @Override

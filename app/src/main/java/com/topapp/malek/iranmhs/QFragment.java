@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class QFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "mdata";
-
+    private static final String TAG = "QFragment";
 
     public  boolean qidm = false;
     private int qid;
@@ -32,8 +33,11 @@ public class QFragment extends Fragment {
     private ArrayList<questions> mquestions;
     public RecyclerView recyclerView;
     ExpandableLayout el;
+    private LinearLayoutManager linearLayoutManager;
+    private int  currentScrollPosition = 0;
     boolean isexp = true;
     boolean isup = true;
+    boolean isExpended = false;
     public QFragment() {
         // Required empty public constructor
     }
@@ -43,8 +47,8 @@ public class QFragment extends Fragment {
         QFragment fragment = new QFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, data.QID);
-      //  args.putInt(ARG_PARAM1, data.QID);
-       // Userid = userid;
+        //  args.putInt(ARG_PARAM1, data.QID);
+        // Userid = userid;
         fragment.setArguments(args);
         fragment.Userid = userid;
         return fragment;
@@ -65,7 +69,7 @@ public class QFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-       // if(recyclerView != null)
+        // if(recyclerView != null)
 
     }
 
@@ -77,8 +81,7 @@ public class QFragment extends Fragment {
         View mv = inflater.inflate(R.layout.fragment_q, container, false);
 
         recyclerView = mv.findViewById(R.id.myrecycle);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()){
+        linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext()){
 
             @Override
             public boolean requestChildRectangleOnScreen(RecyclerView parent, View child, Rect rect, boolean immediate) {
@@ -90,10 +93,12 @@ public class QFragment extends Fragment {
             }
 
 
-        });
+        };
+
+        recyclerView.setLayoutManager(linearLayoutManager);
         questionadapter adapter = new questionadapter(getActivity().getApplicationContext(), mquestions,Userid,this);
 
-       // recyclerView.setItemAnimator(null);
+        // recyclerView.setItemAnimator(null);
 //        ((LinearLayoutManager)recyclerView.getLayoutManager()).setInitialPrefetchItemCount(3);
         ((DefaultItemAnimator)recyclerView.getItemAnimator()).setAddDuration(10);
         ((DefaultItemAnimator)recyclerView.getItemAnimator()).setMoveDuration(10);
@@ -103,7 +108,8 @@ public class QFragment extends Fragment {
 
 
         recyclerView.setAdapter(adapter);
-     //   recyclerView.scrollToPosition(0);
+        //   recyclerView.scrollToPosition(0);
+
 
         recyclerView.addOnScrollListener(
 
@@ -113,23 +119,42 @@ public class QFragment extends Fragment {
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
 
-                        if(dy != 0){
-                            if(isexp){
-                                if(el == null)
-                                    el = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
-                                isexp = false;
 
-                                el.collapse();
+
+                        currentScrollPosition += dy;
+                        Log.d(TAG, "onScrolled: "+currentScrollPosition);
+
+
+                        if(currentScrollPosition==0){
+                            // Its at top
+                            // We're at the top
+                            if(el == null){
+                                el = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
                             }
-                        }
+                                if (!isExpended){
+                                    el.expand();
+                                    isExpended = true;
+                                }
 
+
+                        } else {
+                            if(el == null){
+                                el = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
+                            }
+                                if (isExpended){
+                                    el.collapse();
+                                    isExpended = false;
+                                }
+
+
+                        }
 //                        if (dy < 0 && el != null) {
 //                            if(el.isExpanded())
 //                                el.collapse();
 //                        }
 
 
-                     //   Log.d("scoroll","       scroll => " +dy);
+                        //   Log.d("scoroll","       scroll => " +dy);
 //                        if (dy > 0) {
 //                            isup = true;
 //                        } else if (dy < 0) {
