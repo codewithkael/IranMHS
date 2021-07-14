@@ -32,7 +32,7 @@ public class QFragment extends Fragment {
     private questionnaire qdata;
     private ArrayList<questions> mquestions;
     public RecyclerView recyclerView;
-    ExpandableLayout el;
+    ExpandableLayout expendableLayout;
     private LinearLayoutManager linearLayoutManager;
     private int  currentScrollPosition = 0;
     boolean isexp = true;
@@ -128,21 +128,21 @@ public class QFragment extends Fragment {
                         if(currentScrollPosition==0){
                             // Its at top
                             // We're at the top
-                            if(el == null){
-                                el = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
+                            if(expendableLayout == null){
+                                expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
                             }
-                                if (!isExpended){
-                                    el.expand();
+                                if (!expendableLayout.isExpanded()){
+                                    expendableLayout.expand();
                                     isExpended = true;
                                 }
 
 
                         } else {
-                            if(el == null){
-                                el = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
+                            if(expendableLayout == null){
+                                expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
                             }
-                                if (isExpended){
-                                    el.collapse();
+                                if (expendableLayout.isExpanded()){
+                                    expendableLayout.collapse();
                                     isExpended = false;
                                 }
 

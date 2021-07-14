@@ -159,11 +159,11 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
         if (background instanceof GradientDrawable) {
             ((GradientDrawable)background).setColor(Color.parseColor("#FFFFFF"));
         }
-        if(position == 0){
-            ExpandableLayout el =  ((ExpandableLayout)((View)mRecyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
-            //   el.setTag(1);
-            if(!el.isExpanded()) el.expand();
-        }
+//        if(position == 0){
+//            ExpandableLayout el =  ((ExpandableLayout)((View)mRecyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
+//            //   el.setTag(1);
+//            if(!el.isExpanded()) el.expand();
+//        }
 
 //        if(position == 11){
 //            ExpandableLayout el =  ((ExpandableLayout)((View)mRecyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
