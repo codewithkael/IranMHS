@@ -764,6 +764,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                     }
                     RadioGroup rg = holder.pva.findViewById(R.id.radiogrop);
                     rg.setOnCheckedChangeListener(null);
+                    rg.clearCheck();
                     if (data.QDesctiption != null && !data.QDesctiption.equals("")) {
                         destv.setVisibility(View.VISIBLE);
                         destv.setText(data.QDesctiption.replaceAll("\\\\n", "\\\n"));
