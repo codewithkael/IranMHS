@@ -129,19 +129,19 @@ public class QFragment extends Fragment {
 //                            expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
 //                        }
 //
-                        if (dy>0){
-                            appBarLayout.setExpanded(false, true);
-
-
-                        }
+//                        if (dy>0){
+//                            appBarLayout.setExpanded(false, true);
+//
+//
+//                        }
 
 //                        else
 //
-                        if (!recyclerView.canScrollVertically(-1)){
-                            Log.d(TAG, "onScrolleed: cant scroll top anymore");
-                            appBarLayout.setExpanded(true, true);
-//                            expendableLayout.expand();
-                        }
+//                        if (!recyclerView.canScrollVertically(-1)){
+//                            Log.d(TAG, "onScrolleed: cant scroll top anymore");
+//                            appBarLayout.setExpanded(true, true);
+////                            expendableLayout.expand();
+//                        }
 
 //                        currentScrollPosition += dy;
 //                        Log.d(TAG, "onScrolled: "+currentScrollPosition);
@@ -187,13 +187,13 @@ public class QFragment extends Fragment {
 
 //                        if(newState == RecyclerView.SCROLL_STATE_IDLE )
 //                            isup = true;
-                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                            int firstVisiblePosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition();
-                            if (firstVisiblePosition == 0) {
-                                Log.d(TAG, "onScrollStateChanged: true");
-                                appBarLayout.setExpanded(true, true);
-                            }
-                        }
+//                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                            int firstVisiblePosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition();
+//                            if (firstVisiblePosition == 0) {
+//                                Log.d(TAG, "onScrollStateChanged: true");
+//                                appBarLayout.setExpanded(true, true);
+//                            }
+//                        }
                         super.onScrollStateChanged(recyclerView, newState);
 
 
