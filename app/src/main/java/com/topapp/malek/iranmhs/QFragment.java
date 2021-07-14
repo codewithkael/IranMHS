@@ -119,35 +119,43 @@ public class QFragment extends Fragment {
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
 
-
-
-                        currentScrollPosition += dy;
-                        Log.d(TAG, "onScrolled: "+currentScrollPosition);
-
-
-                        if(currentScrollPosition==0){
-                            // Its at top
-                            // We're at the top
-                            if(expendableLayout == null){
-                                expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
-                            }
-                                if (!expendableLayout.isExpanded()){
-                                    expendableLayout.expand();
-                                    isExpended = true;
-                                }
-
-
-                        } else {
-                            if(expendableLayout == null){
-                                expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
-                            }
-                                if (expendableLayout.isExpanded()){
-                                    expendableLayout.collapse();
-                                    isExpended = false;
-                                }
-
-
+                        if(expendableLayout == null){
+                            expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
                         }
+
+                        if (dy>0){
+                            expendableLayout.collapse();
+
+                        }else
+
+                        if (!recyclerView.canScrollVertically(-1)){
+                            Log.d(TAG, "onScrolleed: cant scroll top anymore");
+                            expendableLayout.expand();
+                        }
+
+//                        currentScrollPosition += dy;
+//                        Log.d(TAG, "onScrolled: "+currentScrollPosition);
+//
+//
+//                        if(currentScrollPosition<linearLayoutManager.getChildAt(0).getHeight()/10){
+//                            // Its at top
+//                            // We're at the top
+//
+//                                if (!expendableLayout.isExpanded()){
+//                                    expendableLayout.expand();
+//                                    isExpended = true;
+//                                }
+//
+//
+//                        } else {
+//
+//                                if (expendableLayout.isExpanded()){
+//                                    expendableLayout.collapse();
+//                                    isExpended = false;
+//                                }
+//
+//
+//                        }
 //                        if (dy < 0 && el != null) {
 //                            if(el.isExpanded())
 //                                el.collapse();
@@ -174,7 +182,6 @@ public class QFragment extends Fragment {
 
                     }
                 });
-
 
 
         recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
