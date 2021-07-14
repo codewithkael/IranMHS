@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
 
 import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.google.android.material.tabs.TabLayout;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.text.HtmlCompat;
 import androidx.viewpager.widget.ViewPager;
 
@@ -33,10 +36,12 @@ public class Main2Activity extends AppCompatActivity {
     QViewPager adapter;
     TextView titleTv;
     ImageView titleIv;
+    ArrayList<questionnaire> data;
 
     DataBase db;
     public static int UserID = 1;
-    boolean issending = false; ExpandableLayout expendableLayout ;
+    boolean issending = false;
+//    RelativeLayout expendableLayout ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +56,8 @@ public class Main2Activity extends AppCompatActivity {
 //        }
         viewPager = (RtlViewPager) findViewById(R.id.viewpager);
         db = new DataBase(getApplicationContext());
-        expendableLayout = findViewById(R.id.expandable_layout);
-        final ArrayList<questionnaire> data = db.getquestinares("");
+//        expendableLayout = findViewById(R.id.expandable_layout);
+       data = db.getquestinares("");
         // Create an adapter that knows which fragment should be shown on each page
         adapter = new QViewPager( getSupportFragmentManager(),data,UserID);
 
@@ -95,32 +100,32 @@ public class Main2Activity extends AppCompatActivity {
                 if(dd.Qdesc != null){
 
                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        ((TextView)expendableLayout.findViewById(R.id.textView11)).setText(Html.fromHtml(dd.Qdesc , Html.FROM_HTML_MODE_LEGACY));
+                        titleTv.setText(Html.fromHtml(dd.Qdesc , Html.FROM_HTML_MODE_LEGACY));
                     }else{
-                        ((TextView)expendableLayout.findViewById(R.id.textView11)).setText(HtmlCompat.fromHtml( dd.Qdesc, HtmlCompat.FROM_HTML_MODE_LEGACY));
+                        titleTv.setText(HtmlCompat.fromHtml( dd.Qdesc, HtmlCompat.FROM_HTML_MODE_LEGACY));
                     }
-                    ((TextView)expendableLayout.findViewById(R.id.textView11)).setVisibility(View.VISIBLE);
+                    titleTv.setVisibility(View.VISIBLE);
                 }else{
-                    ((TextView)expendableLayout.findViewById(R.id.textView11)).setVisibility(View.GONE);
+                    titleTv.setVisibility(View.GONE);
                 }
                 if(dd.imgid > 0){
-                    ((ImageView)expendableLayout.findViewById(R.id.imageView3)).setVisibility(View.VISIBLE);
+                    titleIv.setVisibility(View.VISIBLE);
                     switch (dd.imgid){
                         case 100:
-                            ((ImageView)expendableLayout.findViewById(R.id.imageView3)).setBackgroundResource(R.drawable.a100);
+                            titleIv.setBackgroundResource(R.drawable.a100);
                             break;
                     }
                 }else{
-                    ((ImageView)expendableLayout.findViewById(R.id.imageView3)).setVisibility(View.GONE);
+                    titleIv.setVisibility(View.GONE);
                 }
 
-//                if(dd.Qdesc != null || dd.imgid > 0){
-//                    if(!expendableLayout.isExpanded()) expendableLayout.expand();
-//                }
-//
-//                else {
-//                    if (expendableLayout.isExpanded()) expendableLayout.collapse();
-//                }
+                if(dd.Qdesc != null || dd.imgid > 0){
+                    toolbar.setVisibility(View.VISIBLE);
+                }
+
+                else {
+                   toolbar.setVisibility(View.GONE);
+                }
             }
 
             public void onPageSelected(int position) {
@@ -261,6 +266,8 @@ public class Main2Activity extends AppCompatActivity {
     private void init(){
         titleIv = findViewById(R.id.imageView3);
         titleTv = findViewById(R.id.textView11);
+        toolbar = findViewById(R.id.mainToolbar);
+
     }
 
     private void HandelReq(JSDLData data){
