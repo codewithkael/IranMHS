@@ -1648,13 +1648,25 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                                     nextView.setVisibility(View.GONE);
                                                 }
                                                 else if(et.getSelectedItemPosition() == 2 && st.has("hasinput")){
+
                                                     EditText tv = pviw3.findViewWithTag("inpt-" + String.valueOf(st.getInt("c")));
                                                     tv.setEnabled(true);
+                                                    tv.setVisibility(View.VISIBLE);
+                                                    ViewGroup  container = (ViewGroup)tv.getParent();
+                                                    View previousView = container.getChildAt(container.indexOfChild(tv)-1);
+                                                    previousView.setVisibility(View.VISIBLE);
+
+
                                                 }
                                                 else if(st.has("hasinput")){
                                                     EditText tv = pviw3.findViewWithTag("inpt-" + String.valueOf(st.getInt("c")));
                                                     tv.setText("");
                                                     tv.setEnabled(false);
+                                                    tv.setVisibility(View.GONE  );
+                                                    ViewGroup  container = (ViewGroup)tv.getParent();
+                                                    View previousView = container.getChildAt(container.indexOfChild(tv)-1);
+                                                    previousView.setVisibility(View.GONE);
+
                                                 }
                                             }
                                         } catch (Exception ex) {
