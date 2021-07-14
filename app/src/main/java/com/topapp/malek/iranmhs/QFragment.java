@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -19,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 
 public class QFragment extends Fragment {
@@ -33,6 +36,7 @@ public class QFragment extends Fragment {
     private ArrayList<questions> mquestions;
     public RecyclerView recyclerView;
     ExpandableLayout expendableLayout;
+    AppBarLayout appBarLayout;
     private LinearLayoutManager linearLayoutManager;
     private int  currentScrollPosition = 0;
     boolean isexp = true;
@@ -110,7 +114,9 @@ public class QFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         //   recyclerView.scrollToPosition(0);
 
+//        Toolbar mToolbar = (Toolbar) mv.findViewById(R.id.mainToolbar);
 
+        appBarLayout = getActivity().findViewById(R.id.mainAppbar);
         recyclerView.addOnScrollListener(
 
                 new RecyclerView.OnScrollListener() {
@@ -119,18 +125,22 @@ public class QFragment extends Fragment {
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
 
-                        if(expendableLayout == null){
-                            expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
+//                        if(expendableLayout == null){
+//                            expendableLayout = ((ExpandableLayout)((View)recyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
+//                        }
+//
+                        if (dy>0){
+                            appBarLayout.setExpanded(false, true);
+
+
                         }
 
-                        if (dy>0){
-                            expendableLayout.collapse();
-
-                        }else
-
+//                        else
+//
                         if (!recyclerView.canScrollVertically(-1)){
                             Log.d(TAG, "onScrolleed: cant scroll top anymore");
-                            expendableLayout.expand();
+                            appBarLayout.setExpanded(true, true);
+//                            expendableLayout.expand();
                         }
 
 //                        currentScrollPosition += dy;
@@ -177,6 +187,13 @@ public class QFragment extends Fragment {
 
 //                        if(newState == RecyclerView.SCROLL_STATE_IDLE )
 //                            isup = true;
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                            int firstVisiblePosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition();
+                            if (firstVisiblePosition == 0) {
+                                Log.d(TAG, "onScrollStateChanged: true");
+                                appBarLayout.setExpanded(true, true);
+                            }
+                        }
                         super.onScrollStateChanged(recyclerView, newState);
 
 

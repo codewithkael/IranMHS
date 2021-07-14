@@ -56,7 +56,10 @@ import saman.zamani.persiandate.PersianDate;
 
 public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHolder> {
 
-    private int SpinnerTextSize = 12;
+    private int SpinnerShortTextSize = 17;
+    private int SpinnerMediumTextSize = 15;
+    private int SpinnerLongTextSize = 12;
+    private int SpinnerConditionInt = 15;
     private List<questions> mData;
     private DataBase db;
     private LayoutInflater mInflater;
@@ -2491,7 +2494,14 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                                         int iii = 0;
                                                     }
                                                     DoValidate(null, data, (View) pviw3, pos, true, false,true);
-                                                    ((TextView)view).setTextSize(SpinnerTextSize);
+                                                    if(((TextView)view).getText().toString().length()>SpinnerConditionInt){
+                                                        ((TextView)view).setTextSize(SpinnerLongTextSize);
+                                                    } else if (((TextView)view).getText().toString().length()<SpinnerConditionInt&&((TextView)view).getText().toString().length()>5){
+                                                        ((TextView)view).setTextSize(SpinnerMediumTextSize);
+
+                                                    } else{
+                                                        ((TextView)view).setTextSize(SpinnerShortTextSize);
+                                                    }
 
                                                 }
                                                 @Override
@@ -2830,7 +2840,15 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                                     int iii = 0;
                                                 }
                                                 DoValidate(null, data, (View) pviw3, pos, true, false,true);
-                                                ((TextView)view).setTextSize(SpinnerTextSize);
+                                                if(((TextView)view).getText().toString().length()>SpinnerConditionInt){
+                                                    ((TextView)view).setTextSize(SpinnerLongTextSize);
+                                                } else if (((TextView)view).getText().toString().length()<SpinnerConditionInt&&((TextView)view).getText().toString().length()>5){
+                                                    ((TextView)view).setTextSize(SpinnerMediumTextSize);
+
+                                                } else{
+                                                    ((TextView)view).setTextSize(SpinnerShortTextSize);
+                                                }
+
                                             }
 
                                             @Override
