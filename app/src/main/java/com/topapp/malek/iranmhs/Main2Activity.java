@@ -270,35 +270,38 @@ public class Main2Activity extends AppCompatActivity {
         titleIv = findViewById(R.id.imageView3);
         titleTv = findViewById(R.id.textView11);
         toolbar = findViewById(R.id.mainToolbar);
-        questionnaire dd = data.get(0);
-        if(dd.Qdesc != null){
+        if (data!=null&&!data.isEmpty()){
+            questionnaire dd = data.get(0);
+            if(dd.Qdesc != null){
 
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                titleTv.setText(Html.fromHtml(dd.Qdesc , Html.FROM_HTML_MODE_LEGACY));
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    titleTv.setText(Html.fromHtml(dd.Qdesc , Html.FROM_HTML_MODE_LEGACY));
+                }else{
+                    titleTv.setText(HtmlCompat.fromHtml( dd.Qdesc, HtmlCompat.FROM_HTML_MODE_LEGACY));
+                }
+                titleTv.setVisibility(View.VISIBLE);
             }else{
-                titleTv.setText(HtmlCompat.fromHtml( dd.Qdesc, HtmlCompat.FROM_HTML_MODE_LEGACY));
+                titleTv.setVisibility(View.GONE);
             }
-            titleTv.setVisibility(View.VISIBLE);
-        }else{
-            titleTv.setVisibility(View.GONE);
-        }
-        if(dd.imgid > 0){
-            titleIv.setVisibility(View.VISIBLE);
-            switch (dd.imgid){
-                case 100:
-                    titleIv.setBackgroundResource(R.drawable.a100);
-                    break;
+            if(dd.imgid > 0){
+                titleIv.setVisibility(View.VISIBLE);
+                switch (dd.imgid){
+                    case 100:
+                        titleIv.setBackgroundResource(R.drawable.a100);
+                        break;
+                }
+            }else{
+                titleIv.setVisibility(View.GONE);
             }
-        }else{
-            titleIv.setVisibility(View.GONE);
-        }
 
-        if(dd.Qdesc != null || dd.imgid > 0){
-            toolbar.setVisibility(View.VISIBLE);
-        }
+            if(dd.Qdesc != null || dd.imgid > 0){
+                toolbar.setVisibility(View.VISIBLE);
+            }
 
-        else {
-            toolbar.setVisibility(View.GONE);
+            else {
+                toolbar.setVisibility(View.GONE);
+            }
+
         }
 
 
