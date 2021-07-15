@@ -2037,7 +2037,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                         if (mdata5.has("qtext")) {
                             tv.setText(mdata5.getString("qtext"));
                         } else {
-                            tv.setText("سوالات");
+//                            tv.setText("سوالات");
                         }
 
                         tv.setTextColor(Color.parseColor("#000000"));
