@@ -1736,9 +1736,9 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                 tv.setTextColor(Color.parseColor("#000000"));
                                 parent0.addView(tv);
                                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                    tv.setText(Html.fromHtml( replaceparams( "بنویسید : "), Html.FROM_HTML_MODE_LEGACY));
+                                    tv.setText(Html.fromHtml( replaceparams( "ذکر کنید : "), Html.FROM_HTML_MODE_LEGACY));
                                 } else {
-                                    tv.setText(HtmlCompat.fromHtml(replaceparams("بنویسید : "), HtmlCompat.FROM_HTML_MODE_LEGACY));
+                                    tv.setText(HtmlCompat.fromHtml(replaceparams("ذکر کنید : "), HtmlCompat.FROM_HTML_MODE_LEGACY));
                                 }
 
 
