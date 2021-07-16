@@ -98,7 +98,7 @@ public class QFragment extends Fragment {
 
 
         };
-
+//        linearLayoutManager.setInitialPrefetchItemCount(1);
         recyclerView.setLayoutManager(linearLayoutManager);
         questionadapter adapter = new questionadapter(getActivity().getApplicationContext(), mquestions,Userid,this);
 
