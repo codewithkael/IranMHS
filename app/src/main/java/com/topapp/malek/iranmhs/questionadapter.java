@@ -1931,6 +1931,8 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                         JSONObject mdata5 = new JSONObject(data.MetaData);
                         if(mdata5.has("bcolor")){
                             holder.pva.setBackgroundColor(Color.parseColor(mdata5.getString("bcolor")));
+                        } else {
+                            holder.pva.setBackgroundColor(cnt.getResources().getColor(R.color.mdtp_white));
                         }
                         JSONArray ops5 = mdata5.getJSONArray("rows");
                         JSONArray ops5c = mdata5.getJSONArray("cols");
