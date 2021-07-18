@@ -3217,20 +3217,20 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                             mRecyclerView.post(new Runnable() {
                                 @Override
                                 public void run() {
-//                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.DKbtn).setBackgroundResource(R.drawable.btngray);
-//                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.RFbtn).setBackgroundResource(R.drawable.btngray);
+                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.DKbtn).setBackgroundResource(R.drawable.btngray);
+                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.RFbtn).setBackgroundResource(R.drawable.btngray);
                                 }
                             });
                         }
-//                        if ((nc && !ans.AnswerMeta.equals("RF") && mdata.has("hasRF"))) {
-//                            mRecyclerView.post(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.DKbtn).setBackgroundResource(R.drawable.btngray);
-//                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.RFbtn).setBackgroundResource(R.drawable.btngray);
-//                                }
-//                            });
-//                        }
+                        if ((nc && !ans.AnswerMeta.equals("RF") && mdata.has("hasRF"))) {
+                            mRecyclerView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.DKbtn).setBackgroundResource(R.drawable.btngray);
+                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.RFbtn).setBackgroundResource(R.drawable.btngray);
+                                }
+                            });
+                        }
 
                         mRecyclerView.post(new Runnable() {
                             @Override
