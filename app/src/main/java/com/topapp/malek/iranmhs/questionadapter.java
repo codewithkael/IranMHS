@@ -55,7 +55,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import saman.zamani.persiandate.PersianDate;
 
 public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHolder> {
-
+    private static final String TAG = "questionadapter";
     private int SpinnerShortTextSize = 17;
     private int SpinnerMediumTextSize = 15;
     private int SpinnerLongTextSize = 12;
@@ -162,17 +162,6 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
         if (background instanceof GradientDrawable) {
             ((GradientDrawable)background).setColor(Color.parseColor("#FFFFFF"));
         }
-//        if(position == 0){
-//            ExpandableLayout el =  ((ExpandableLayout)((View)mRecyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
-//            //   el.setTag(1);
-//            if(!el.isExpanded()) el.expand();
-//        }
-
-//        if(position == 11){
-//            ExpandableLayout el =  ((ExpandableLayout)((View)mRecyclerView.getParent().getParent().getParent()).findViewById(R.id.expandable_layout));
-//            //   el.setTag(1);
-//            if(el.isExpanded()) el.collapse();
-//        }
 
 
         Log.d("scoroll",data.QID+")))    onBindViewHolder("+position+") ===    scoroll => " + data.QnID);
@@ -253,12 +242,15 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                 //mlch//   if (lastquestionid <= data.QnID) lastquestionid = data.QnID;
                             }
 
-                            if (!ans.AnswerMeta.equals("RN")) {
+                            if (!ans.AnswerMeta.equals("RN")&&!ans.AnswerMeta.equals("DK")&&!ans.AnswerMeta.equals("RF")) {
                                 JSONObject answermdata = new JSONObject(ans.AnswerMeta);
-                                if (answermdata.has("answers")) {
+//                                dkbtn.setBackgroundResource(R.drawable.btngray);
+//                                rfbtn.setBackgroundResource(R.drawable.btngray);
+                                if (!ans.AnswerMeta.equals("RN") &&!ans.AnswerMeta.equals("RF") &&!ans.AnswerMeta.equals("DK")) {
                                     ansdata = answermdata.getJSONArray("answers");
                                 }
                             }
+
                             if (lastquestionid <= data.QnID) lastquestionid = data.QnID;
                         }
 
@@ -333,7 +325,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                 // final SpinAdapter<spval> dataAdapter = new SpinAdapter<spval>(cnt, android.R.layout.simple_spinner_item, vals);
 
                                 tv2.setAdapter(spinnerArrayAdapter);
-                                if (ansdata.length() > 0) {
+                                if (ansdata.length() > 0&&!ans.AnswerMeta.equals("DK")&&!ans.AnswerMeta.equals("RF")) {
                                     JSONObject ansst = ansdata.getJSONObject(i);
 
                                     if(st.getString("t").equals("PRB") || st.getString("t").equals("PRN")){
@@ -343,12 +335,20 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                     }
 
 
+                                } else if (ans.AnswerMeta.equals("DK") || ans.AnswerMeta.equals("RF")){
+                                    tv2.setSelection(0);
                                 }
+
 
                                 tv2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         LinearLayout pviw3 = (LinearLayout) view.getParent().getParent();
+                                        if (position!=0){
+                                            dkbtn.setBackgroundResource(R.drawable.btngray);
+                                            rfbtn.setBackgroundResource(R.drawable.btngray);
+                                        }
+
                                         int pos = mRecyclerView.getLayoutManager().getPosition((View) pviw3.getParent().getParent());
                                         questions data = mData.get(pos);
                                         DoValidate(null, data, (View) pviw3.getParent(), pos, true, false,true);
@@ -589,6 +589,12 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                         }
 
                     } catch (Exception ex) {
+                        for (StackTraceElement elements: ex.getStackTrace()
+                             ) {
+                            Log.d(TAG, "onBindViewHolder Masoud: "+ex.getMessage()+" "+elements.getLineNumber()+"\n"+elements.getMethodName());
+
+                        }
+
                         int i = 0;
                     }
                     //endregion
