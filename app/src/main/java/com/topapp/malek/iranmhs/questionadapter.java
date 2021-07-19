@@ -344,10 +344,10 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         LinearLayout pviw3 = (LinearLayout) view.getParent().getParent();
-                                        if (position!=0){
-                                            dkbtn.setBackgroundResource(R.drawable.btngray);
-                                            rfbtn.setBackgroundResource(R.drawable.btngray);
-                                        }
+//                                        if (position!=0){
+//                                            dkbtn.setBackgroundResource(R.drawable.btngray);
+//                                            rfbtn.setBackgroundResource(R.drawable.btngray);
+//                                        }
 
                                         int pos = mRecyclerView.getLayoutManager().getPosition((View) pviw3.getParent().getParent());
                                         questions data = mData.get(pos);
@@ -590,8 +590,8 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
 
                     } catch (Exception ex) {
                         for (StackTraceElement elements: ex.getStackTrace()
-                             ) {
-                            Log.d(TAG, "onBindViewHolder Masoud: "+ex.getMessage()+" "+elements.getLineNumber()+"\n"+elements.getMethodName());
+                        ) {
+                            //  Log.d(TAG, "onBindViewHolder Masoud: "+ex.getMessage()+" "+elements.getLineNumber()+"\n"+elements.getMethodName());
 
                         }
 
@@ -3090,24 +3090,44 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                     JSONArray mlist = mdata.getJSONArray("options");
 
 
-                    if (ans.answerid != -1 && ans.AnswerMeta.equals("DK") && mdata.has("hasDK")) {
-                        mRecyclerView.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mRecyclerView.getAdapter().notifyItemChanged(position + 1);
+                    boolean flag = true;
+                    for (int i = 0; i < mlist.length(); i++) {
+                        JSONObject st = mlist.getJSONObject(i);
+                        if(st.has("iscombo")){
+                            Spinner et = parentview.findViewWithTag("inp-" + String.valueOf(st.getInt("c")));
+                            if(et.getSelectedItemPosition() > 0){
+                                flag = false;
                             }
-                        });
-                        return ress;
-                    }
-                    if (ans.answerid != -1 && ans.AnswerMeta.equals("RF") && mdata.has("hasRF")) {
-                        mRecyclerView.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mRecyclerView.getAdapter().notifyItemChanged(position + 1);
+                        }else{
+                            EditText et = parentview.findViewWithTag("inp-" + String.valueOf(st.getInt("c")));
+                            if(!et.getText().toString().replace(" ","").equals("")){
+                                flag = false;
                             }
-                        });
-                        return ress;
+                        }
                     }
+                    if(flag){
+
+                        if (ans.answerid != -1 && ans.AnswerMeta.equals("DK") && mdata.has("hasDK")) {
+                            mRecyclerView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mRecyclerView.getAdapter().notifyItemChanged(position + 1);
+                                }
+                            });
+                            return ress;
+                        }
+                        if (ans.answerid != -1 && ans.AnswerMeta.equals("RF") && mdata.has("hasRF")) {
+                            mRecyclerView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mRecyclerView.getAdapter().notifyItemChanged(position + 1);
+                                }
+                            });
+                            return ress;
+                        }
+                    }
+
+
 
                     for (int i = 0; i < mlist.length(); i++) {
                         JSONObject st = mlist.getJSONObject(i);
@@ -3116,7 +3136,7 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                         if(st.has("iscombo")){
 
                             Spinner et = parentview.findViewWithTag("inp-" + String.valueOf(st.getInt("c")));
-                            txt = et.getSelectedItem().toString().split("-")[0];
+                            //  txt = et.getSelectedItem().toString().split("-")[0];
 
                             if (et.getSelectedItem().toString().equals("")) {
                                 isok = false;
@@ -3193,6 +3213,12 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
 
                     }
 
+
+
+
+
+
+
                     if (isok) {
                         ansdata.put("answers", jans);
 
@@ -3222,15 +3248,15 @@ public class questionadapter extends RecyclerView.Adapter<questionadapter.ViewHo
                                 }
                             });
                         }
-                        if ((nc && !ans.AnswerMeta.equals("RF") && mdata.has("hasRF"))) {
-                            mRecyclerView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.DKbtn).setBackgroundResource(R.drawable.btngray);
-                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.RFbtn).setBackgroundResource(R.drawable.btngray);
-                                }
-                            });
-                        }
+//                        if ((nc && !ans.AnswerMeta.equals("RF") && mdata.has("hasRF"))) {
+//                            mRecyclerView.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.DKbtn).setBackgroundResource(R.drawable.btngray);
+//                                    mRecyclerView.getLayoutManager().findViewByPosition(position).findViewById(R.id.RFbtn).setBackgroundResource(R.drawable.btngray);
+//                                }
+//                            });
+//                        }
 
                         mRecyclerView.post(new Runnable() {
                             @Override
